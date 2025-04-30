@@ -15,10 +15,10 @@ gui.Parent = playerGui
 local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
--- Main box (90% of screen)
+-- Main box (100% of screen)
 local textBox = Instance.new("TextLabel")
-textBox.Size = UDim2.new(0.9, 0, 0.9, 0)
-textBox.Position = UDim2.new(0.05, 0, 0.05, 0)
+textBox.Size = UDim2.new(1, 0, 1, 0)
+textBox.Position = UDim2.new(0, 0, 0, 0)
 textBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 textBox.TextColor3 = Color3.new(1, 1, 1)
 textBox.Font = Enum.Font.SourceSansBold
@@ -64,6 +64,8 @@ textBox.Text = "Script is now working!"
 -- Restore core UI
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
 
--- Example: enable something when countdown is done
-print("Countdown done, script is now active.")
-
+-- Script logic after countdown
+print("Countdown done, executing script.")
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+humanoid.WalkSpeed = 32
